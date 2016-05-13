@@ -1,12 +1,7 @@
-Episode 8, Comprendre comment surcharger les vues du Bundle FOSUsers utilisé dans le framework Symfony2.
-
-Accéder au tutoriel :
-
-http://www.devandclick.fr/tutoriels-videos/2014/episode-8-surcharger-les-vues-du-bundle-fos-user.html
+I'm creating a web site Ecommerce to learn and train PHP and Symfony 
+The tutorial i'm following is provided by DEV AND CLICK and is avalaible on Youtube
 
 
 
-Apprendre facilement la programmation, comprendre et échanger.
-Grâce aux vidéos DevAndClick vous allez vous ouvrir sur des nouvelles technologies mais aussi apprendre à les maîtriser.
-
-http://www.devandclick.com
+Here is the link to find other tutorials form DEV AND CLICK !!!
+http//www.devandclick.com
