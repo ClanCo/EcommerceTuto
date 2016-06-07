@@ -39,74 +39,94 @@ class __TwigTemplate_a630dc29332bfed9a8b86f15b2d9681b6c3d9063b129130238432066522
         echo " ";
     }
 
-    // line 6
+    // line 7
     public function block_body($context, array $blocks = array())
     {
-        // line 7
+        // line 8
         echo "<div class=\"container\">
     <div class=\"row\">
-
+                
         <div class=\"span3\">
                 ";
-        // line 11
-        $this->env->loadTemplate("::modulesUsed/navigation.html.twig")->display($context);
         // line 12
+        $this->env->loadTemplate("::modulesUsed/navigation.html.twig")->display($context);
+        echo " 
+                ";
+        // line 13
+        echo $this->env->getExtension('actions')->renderUri($this->env->getExtension('http_kernel')->controller("EcommerceBundle:Panier:menu"), array());
+        // line 14
         echo "            </div>\t
 
             <div class=\"span9\">
                 <div class=\"row\">
                     <div class=\"span5\">
                         <img src=\"";
-        // line 17
+        // line 19
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "image"), "path"), "html", null, true);
         echo "\" alt=\"DevAndClick\" width=\"470\" height=\"310\">
                     </div>
 
                     <div class=\"span4\">
                         <h4>";
-        // line 21
+        // line 23
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "nom"), "html", null, true);
         echo "</h4>
                         <h5>";
-        // line 22
+        // line 24
         echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "categorie"), "nom"), "html", null, true);
         echo "</h5>
                         <p>";
-        // line 23
+        // line 25
         echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "description"), "html", null, true);
         echo "</p>
                         <h4>";
-        // line 24
+        // line 26
         echo twig_escape_filter($this->env, $this->env->getExtension('tva_extension')->calculTva($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix"), $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tva"), "multiplicate")), "html", null, true);
         echo "</h4>
-                        <form action=\"";
-        // line 25
-        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ajouter", array("id" => $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"))), "html", null, true);
-        echo "\" method=\"get\" >
+                        ";
+        // line 27
+        if ((!$this->getAttribute((isset($context["panier"]) ? $context["panier"] : null), $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"), array(), "array", true, true))) {
+            // line 28
+            echo "                        <form action=\"";
+            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ajouter", array("id" => $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"))), "html", null, true);
+            echo "\" method=\"get\" >
                             <select name=\"qte\" class=\"span1\">
                                 ";
-        // line 27
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable(range(1, 10));
-        foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
-            // line 28
-            echo "                                <option value=\"";
-            echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
-            echo "\" > ";
-            echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
-            echo "</option>
+            // line 30
+            $context['_parent'] = (array) $context;
+            $context['_seq'] = twig_ensure_traversable(range(1, 10));
+            foreach ($context['_seq'] as $context["_key"] => $context["i"]) {
+                // line 31
+                echo "                                <option value=\"";
+                echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
+                echo "\" > ";
+                echo twig_escape_filter($this->env, (isset($context["i"]) ? $context["i"] : $this->getContext($context, "i")), "html", null, true);
+                echo "</option>
                                 ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 30
-        echo "                            </select>
+            }
+            $_parent = $context['_parent'];
+            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['i'], $context['_parent'], $context['loop']);
+            $context = array_intersect_key($context, $_parent) + $_parent;
+            // line 33
+            echo "                            </select>
 
                             <div>
                                 <button class=\"btn btn-primary\">Ajouter au panier</button>
                             </div>
                         </form>
+                            ";
+        } else {
+            // line 40
+            echo "                            <div>
+                                <a href=\"";
+            // line 41
+            echo $this->env->getExtension('routing')->getPath("panier");
+            echo "\" class=\"btn btn-primary\">Le produit est déjà dans votre panier</a>
+                            </div>
+                            ";
+        }
+        // line 44
+        echo "                            
 
                     </div>
                 </div>
@@ -128,6 +148,6 @@ class __TwigTemplate_a630dc29332bfed9a8b86f15b2d9681b6c3d9063b129130238432066522
 
     public function getDebugInfo()
     {
-        return array (  104 => 30,  93 => 28,  89 => 27,  84 => 25,  80 => 24,  76 => 23,  72 => 22,  68 => 21,  61 => 17,  54 => 12,  52 => 11,  46 => 7,  43 => 6,  36 => 4,  30 => 3,);
+        return array (  129 => 44,  123 => 41,  120 => 40,  111 => 33,  100 => 31,  96 => 30,  90 => 28,  88 => 27,  84 => 26,  80 => 25,  76 => 24,  72 => 23,  65 => 19,  58 => 14,  56 => 13,  52 => 12,  46 => 8,  43 => 7,  36 => 4,  30 => 3,);
     }
 }

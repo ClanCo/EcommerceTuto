@@ -2117,6 +2117,14 @@
         </argument>
         <argument>0</argument>
       </call>
+      <call method="addListenerService">
+        <argument>kernel.request</argument>
+        <argument type="collection">
+          <argument>redirectionlistener</argument>
+          <argument>onKernelRequest</argument>
+        </argument>
+        <argument>0</argument>
+      </call>
       <call method="addSubscriberService">
         <argument>response_listener</argument>
         <argument>Symfony\Component\HttpKernel\EventListener\ResponseListener</argument>
@@ -2846,7 +2854,7 @@
         </argument>
         <argument type="service">
           <service class="Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider" public="false">
-            <argument>57331c1c3006a</argument>
+            <argument>5746aa9ac2bc3</argument>
           </service>
         </argument>
         <argument type="service">
@@ -3130,7 +3138,7 @@
         <argument type="service">
           <service class="Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener" public="false">
             <argument type="service" id="security.context"/>
-            <argument>57331c1c3006a</argument>
+            <argument>5746aa9ac2bc3</argument>
             <argument type="service" id="monolog.logger.security" on-invalid="null"/>
           </service>
         </argument>
@@ -3420,6 +3428,9 @@
       </call>
       <call method="addExtension">
         <argument type="service" id="tva"/>
+      </call>
+      <call method="addExtension">
+        <argument type="service" id="montanttva"/>
       </call>
       <call method="addGlobal">
         <argument>app</argument>
@@ -3821,6 +3832,14 @@
     </service>
     <service id="tva" class="Ecommerce\EcommerceBundle\Twig\Extension\TvaExtension">
       <tag name="twig.extension"/>
+    </service>
+    <service id="montanttva" class="Ecommerce\EcommerceBundle\Twig\Extension\MontantTvaExtension">
+      <tag name="twig.extension"/>
+    </service>
+    <service id="redirectionlistener" class="Ecommerce\EcommerceBundle\Listener\RedirectionListener">
+      <tag name="kernel.event_listener" event="kernel.request" method="onKernelRequest"/>
+      <argument type="service" id="service_container"/>
+      <argument type="service" id="session"/>
     </service>
     <service id="fos_user.security.interactive_login_listener" class="FOS\UserBundle\EventListener\LastLoginListener">
       <tag name="kernel.event_subscriber"/>

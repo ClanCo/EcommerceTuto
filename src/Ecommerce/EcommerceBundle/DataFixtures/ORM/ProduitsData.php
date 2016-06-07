@@ -24,7 +24,7 @@ class ProduitsData extends AbstractFixture implements OrderedFixtureInterface
         $produit1->setImage($this->getReference('media3'));
         $produit1->setNom('Poivron Rouge');
         $produit1->setPrix('1.99');
-        $produit1->setTva($this->getReference('tva2'));
+        $produit1->setTva($this->getReference('tva1'));
         $manager->persist($produit1);
         
         $produit2 = new Produits();
@@ -34,7 +34,7 @@ class ProduitsData extends AbstractFixture implements OrderedFixtureInterface
         $produit2->setImage($this->getReference('media4'));
         $produit2->setNom('Piment');
         $produit2->setPrix('3.99');
-        $produit2->setTva($this->getReference('tva2'));
+        $produit2->setTva($this->getReference('tva1'));
         $manager->persist($produit2);
         
         $produit3 = new Produits();
@@ -64,7 +64,7 @@ class ProduitsData extends AbstractFixture implements OrderedFixtureInterface
         $produit5->setImage($this->getReference('media8'));
         $produit5->setNom('Orange');
         $produit5->setPrix('0.99');
-        $produit5->setTva($this->getReference('tva2'));
+        $produit5->setTva($this->getReference('tva1'));
         $manager->persist($produit5);
         
         $produit6 = new Produits();
