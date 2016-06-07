@@ -41,7 +41,7 @@ class __TwigTemplate_0838eb7b7e6e731a45efa1c45144156fcdc9c97b3046600c75d76f1ba81
             // line 12
             echo "                        <form action=\"";
             echo $this->env->getExtension('routing')->getPath("validation");
-            echo "\">
+            echo "\" method=\"POST\">
                             <h4>Adresse de livraison</h4>
                             ";
             // line 14
@@ -64,7 +64,7 @@ class __TwigTemplate_0838eb7b7e6e731a45efa1c45144156fcdc9c97b3046600c75d76f1ba81
                 // line 15
                 echo "                            
                             <label class=\"radio\">
-                                <input type=\"radio\" name=\"optionsRadios\" id=\"optionsRadios1\" value=\"";
+                                <input type=\"radio\" name=\"livraison\"  value=\"";
                 // line 17
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["adresse"]) ? $context["adresse"] : $this->getContext($context, "adresse")), "id"), "html", null, true);
                 echo "\" ";
@@ -130,7 +130,7 @@ class __TwigTemplate_0838eb7b7e6e731a45efa1c45144156fcdc9c97b3046600c75d76f1ba81
                 // line 27
                 echo "                            
                             <label class=\"radio\">
-                                <input type=\"radio\" name=\"optionsRadios\" id=\"optionsRadios1\" value=\"";
+                                <input type=\"radio\" name=\"facturation\" value=\"";
                 // line 29
                 echo twig_escape_filter($this->env, $this->getAttribute((isset($context["adresse"]) ? $context["adresse"] : $this->getContext($context, "adresse")), "id"), "html", null, true);
                 echo "\" ";
