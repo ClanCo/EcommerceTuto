@@ -21,60 +21,26 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
 
     protected function doDisplay(array $context, array $blocks = array())
     {
-        // line 3
-        $context["totalHT"] = 0;
-        // line 4
-        $context["totalTTC"] = 0;
-        // line 5
-        $context["refTva"] = array();
-        // line 7
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits")));
-        foreach ($context['_seq'] as $context["_key"] => $context["produit"]) {
-            // line 8
-            $context["refTva"] = twig_array_merge((isset($context["refTva"]) ? $context["refTva"] : $this->getContext($context, "refTva")), array(("%" . $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tva"), "val")) => 0));
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
         $this->parent->display($context, array_merge($this->blocks, $blocks));
     }
 
-    // line 11
+    // line 3
     public function block_body($context, array $blocks = array())
     {
-        // line 12
+        // line 4
         echo "<div class=\"container\">
     <div class=\"row\">
         
         <div class=\"span3\">
             ";
-        // line 16
+        // line 8
         $this->env->loadTemplate("::modulesUsed/navigation.html.twig")->display($context);
-        // line 17
+        // line 9
         echo "        </div>
         
         <div class=\"span9\">
             
-            ";
-        // line 21
-        $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute($this->getAttribute((isset($context["app"]) ? $context["app"] : $this->getContext($context, "app")), "session"), "flashbag"), "get", array(0 => "success"), "method"));
-        foreach ($context['_seq'] as $context["_key"] => $context["flashMessage"]) {
-            // line 22
-            echo "                <div class=\"alert alert-success\">
-                    ";
-            // line 23
-            echo twig_escape_filter($this->env, (isset($context["flashMessage"]) ? $context["flashMessage"] : $this->getContext($context, "flashMessage")), "html", null, true);
-            echo "
-                </div>
-                ";
-        }
-        $_parent = $context['_parent'];
-        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['flashMessage'], $context['_parent'], $context['loop']);
-        $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 26
-        echo "            <h2>Valider mon parnier</h2>
+            <h2>Valider mon parnier</h2>
                 <table class=\"table table-striped table-hover\">
                     <thead>
                         <tr>
@@ -84,68 +50,40 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
                             <th>Total HT</th>
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody>                   
                         ";
-        // line 37
-        if ((twig_length_filter($this->env, (isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits"))) == 0)) {
-            // line 38
-            echo "                            <tr>
-                                <td colspan=\"4\"><center> Aucun article dans votre panier </center> </td>
-                            </tr>
-                            
-                            ";
-        }
-        // line 43
-        echo "                            
-                        ";
-        // line 44
+        // line 24
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["produits"]) ? $context["produits"] : $this->getContext($context, "produits")));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "produit"));
         foreach ($context['_seq'] as $context["_key"] => $context["produit"]) {
-            // line 45
+            // line 25
             echo "                        <tr>
-                            <form action=\"";
-            // line 46
-            echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("ajouter", array("id" => $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"))), "html", null, true);
-            echo "\" method=\"get\">
                             <td>";
-            // line 47
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "nom"), "html", null, true);
+            // line 26
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "reference"), "html", null, true);
             echo "</td>
                             <td>
                                ";
-            // line 49
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"), array(), "array"), "html", null, true);
+            // line 28
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "quantite"), "html", null, true);
             echo " 
                             </td>
                             <td>";
-            // line 51
-            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix"), "html", null, true);
+            // line 30
+            echo twig_escape_filter($this->env, $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prixHT"), "html", null, true);
             echo " \$</td>
                             <td>";
-            // line 52
-            echo twig_escape_filter($this->env, ($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix") * $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"), array(), "array")), "html", null, true);
+            // line 31
+            echo twig_escape_filter($this->env, ($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prixHT") * $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "quantite")), "html", null, true);
             echo " \$</td>
                             </form>
                         </tr>
-                        
-                        ";
-            // line 56
-            $context["totalHT"] = ((isset($context["totalHT"]) ? $context["totalHT"] : $this->getContext($context, "totalHT")) + ($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix") * $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"), array(), "array")));
-            // line 57
-            echo "                        ";
-            $context["totalTTC"] = ((isset($context["totalTTC"]) ? $context["totalTTC"] : $this->getContext($context, "totalTTC")) + $this->env->getExtension('tva_extension')->calculTva(($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix") * $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"), array(), "array")), $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tva"), "multiplicate")));
-            // line 58
-            echo "                        ";
-            $context["refTva"] = twig_array_merge((isset($context["refTva"]) ? $context["refTva"] : $this->getContext($context, "refTva")), array(("%" . $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tva"), "val")) => ($this->getAttribute((isset($context["refTva"]) ? $context["refTva"] : $this->getContext($context, "refTva")), ("%" . $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tva"), "val")), array(), "array") + $this->env->getExtension('montant_tva_extension')->montantTva(($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "prix") * $this->getAttribute((isset($context["panier"]) ? $context["panier"] : $this->getContext($context, "panier")), $this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "id"), array(), "array")), $this->getAttribute($this->getAttribute((isset($context["produit"]) ? $context["produit"] : $this->getContext($context, "produit")), "tva"), "multiplicate")))));
-            // line 59
-            echo "                        
                         ";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['produit'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 61
+        // line 35
         echo "                    </tbody>
                 </table>
 
@@ -153,16 +91,16 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
                         
             <dl class=\"dl-horizontal pull-right\"> 
                 <dt>Total HT :</dt><dd>";
-        // line 67
-        echo twig_escape_filter($this->env, (isset($context["totalHT"]) ? $context["totalHT"] : $this->getContext($context, "totalHT")), "html", null, true);
+        // line 41
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "prixHT"), "html", null, true);
         echo " \$</dd>
 
                 ";
-        // line 69
+        // line 43
         $context['_parent'] = (array) $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["refTva"]) ? $context["refTva"] : $this->getContext($context, "refTva")));
+        $context['_seq'] = twig_ensure_traversable($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "tva"));
         foreach ($context['_seq'] as $context["key"] => $context["tva"]) {
-            // line 70
+            // line 44
             echo "                <dt>TVA ";
             echo twig_escape_filter($this->env, (isset($context["key"]) ? $context["key"] : $this->getContext($context, "key")), "html", null, true);
             echo " :</dt><dd>";
@@ -173,9 +111,9 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['key'], $context['tva'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 72
+        // line 46
         echo "                <dt>Total:</dt><dd>";
-        echo twig_escape_filter($this->env, (isset($context["totalTTC"]) ? $context["totalTTC"] : $this->getContext($context, "totalTTC")), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "prixTTC"), "html", null, true);
         echo " \$</dd>
             </dl>
             
@@ -183,22 +121,22 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
                 <dl class=\"pull-left\">
                     <dt><h4>Adresse de livraison</h4></dt>
                     <dt>";
-        // line 78
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["livraison"]) ? $context["livraison"] : $this->getContext($context, "livraison")), "prenom"), "html", null, true);
+        // line 52
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "livraison"), "prenom"), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["livraison"]) ? $context["livraison"] : $this->getContext($context, "livraison")), "nom"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "livraison"), "nom"), "html", null, true);
         echo " </dt>
                     <dt>";
-        // line 79
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["livraison"]) ? $context["livraison"] : $this->getContext($context, "livraison")), "adresse"), "html", null, true);
+        // line 53
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "livraison"), "adresse"), "html", null, true);
         echo " </dt>
                     <dt>";
-        // line 80
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["livraison"]) ? $context["livraison"] : $this->getContext($context, "livraison")), "cp"), "html", null, true);
+        // line 54
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "livraison"), "cp"), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["livraison"]) ? $context["livraison"] : $this->getContext($context, "livraison")), "ville"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "livraison"), "ville"), "html", null, true);
         echo " - ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["livraison"]) ? $context["livraison"] : $this->getContext($context, "livraison")), "pays"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "livraison"), "pays"), "html", null, true);
         echo " </dt>
                 </dl>
             </div>
@@ -208,30 +146,49 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
                 <dl class=\"pull-left\">
                     <dt><h4>Adresse de facturation</h4></dt>
                     <dt>";
-        // line 88
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["facturation"]) ? $context["facturation"] : $this->getContext($context, "facturation")), "prenom"), "html", null, true);
+        // line 62
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "facturation"), "prenom"), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["facturation"]) ? $context["facturation"] : $this->getContext($context, "facturation")), "nom"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "facturation"), "nom"), "html", null, true);
         echo " </dt>
                     <dt>";
-        // line 89
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["facturation"]) ? $context["facturation"] : $this->getContext($context, "facturation")), "adresse"), "html", null, true);
+        // line 63
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "facturation"), "adresse"), "html", null, true);
         echo " </dt>
                     <dt>";
-        // line 90
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["facturation"]) ? $context["facturation"] : $this->getContext($context, "facturation")), "cp"), "html", null, true);
+        // line 64
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "facturation"), "cp"), "html", null, true);
         echo " ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["facturation"]) ? $context["facturation"] : $this->getContext($context, "facturation")), "ville"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "facturation"), "ville"), "html", null, true);
         echo " - ";
-        echo twig_escape_filter($this->env, $this->getAttribute((isset($context["facturation"]) ? $context["facturation"] : $this->getContext($context, "facturation")), "pays"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "facturation"), "pays"), "html", null, true);
         echo " </dt>
                 </dl>
             </div>
             <div class=\"clearfix\"></div>
             
-            <a href=\"#\" class=\"btn btn-success pull-right\">Payer</a>
+            <form action=\"";
+        // line 69
+        echo twig_escape_filter($this->env, $this->env->getExtension('routing')->getPath("validationCommande", array("id" => $this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "id"))), "html", null, true);
+        echo "\" method=\"POST\" />
+                <input name=\"token\" type=\"hidden\" value=\"";
+        // line 70
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "token"), "html", null, true);
+        echo "\"/>
+                <input name=\"prix\" type=\"hidden\" value=\"";
+        // line 71
+        echo twig_escape_filter($this->env, $this->getAttribute($this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "commande"), "prixTTC"), "html", null, true);
+        echo "\"/>
+                <input name=\"date\" type=\"hidden\" value=\"";
+        // line 72
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, $this->getAttribute((isset($context["commande"]) ? $context["commande"] : $this->getContext($context, "commande")), "date"), "dmyhms"), "html", null, true);
+        echo "\"/>
+                <button type=\"submit\" class=\"btn btn-success pull-right\">Payer</button>
+            </form>
+
+            
             <a href=\"";
-        // line 96
+        // line 77
         echo $this->env->getExtension('routing')->getPath("livraison");
         echo "\" class=\"btn btn-primary\">retour</a>
             
@@ -254,6 +211,6 @@ class __TwigTemplate_4af4cf5202ceb912e51eba25c1a38c78f0ac8c7496cb24277ba63a9ba3b
 
     public function getDebugInfo()
     {
-        return array (  235 => 96,  222 => 90,  218 => 89,  212 => 88,  197 => 80,  193 => 79,  187 => 78,  177 => 72,  166 => 70,  162 => 69,  157 => 67,  149 => 61,  142 => 59,  139 => 58,  136 => 57,  134 => 56,  127 => 52,  123 => 51,  118 => 49,  113 => 47,  109 => 46,  106 => 45,  102 => 44,  99 => 43,  92 => 38,  90 => 37,  77 => 26,  68 => 23,  65 => 22,  61 => 21,  55 => 17,  53 => 16,  47 => 12,  44 => 11,  35 => 8,  31 => 7,  29 => 5,  27 => 4,  25 => 3,);
+        return array (  192 => 77,  184 => 72,  180 => 71,  176 => 70,  172 => 69,  160 => 64,  156 => 63,  150 => 62,  135 => 54,  131 => 53,  125 => 52,  115 => 46,  104 => 44,  100 => 43,  95 => 41,  87 => 35,  77 => 31,  73 => 30,  68 => 28,  63 => 26,  60 => 25,  56 => 24,  39 => 9,  37 => 8,  31 => 4,  28 => 3,);
     }
 }

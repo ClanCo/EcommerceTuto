@@ -140,6 +140,11 @@ class PanierController extends Controller
         if($this->get('request')->getMethod() == 'POST')
             $this->setLivraisonOnSession();
         
+        $em = $this->getDoctrine()->getManager();     
+        $prepareCommande = $this->forward('EcommerceBundle:Commandes:prepareCommande');
+        $commande = $em->getRepository('EcommerceBundle:Commandes')->find($prepareCommande->getContent());
+           
+        /*
         $em = $this->getDoctrine()->getManager();
         $session = $this->getRequest()->getSession();
         $adresse = $session->get('adresse');
@@ -147,10 +152,8 @@ class PanierController extends Controller
         $produits = $em->getRepository('EcommerceBundle:Produits')->findArray(array_keys($session->get('panier')));
         $livraison = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['livraison']);
         $facturation = $em->getRepository('EcommerceBundle:UtilisateursAdresses')->find($adresse['facturation']);
-                
-        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('produits' => $produits,
-                                                                                                   'livraison' => $livraison,
-                                                                                                   'facturation' => $facturation,
-                                                                                                   'panier' => $session->get('panier')));
+        */
+        
+        return $this->render('EcommerceBundle:Default:panier/layout/validation.html.twig', array('commande' => $commande));
     }
 }

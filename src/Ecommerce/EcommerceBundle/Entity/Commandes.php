@@ -52,9 +52,9 @@ class Commandes
     /**
      * @var array
      *
-     * @ORM\Column(name="produits", type="array")
+     * @ORM\Column(name="commande", type="array")
      */
-    private $produits;
+    private $commande;
 
 
     /**
@@ -139,12 +139,12 @@ class Commandes
     /**
      * Set produits
      *
-     * @param array $produits
+     * @param array $commande
      * @return Commandes
      */
-    public function setProduits($produits)
+    public function setCommande($commande)
     {
-        $this->produits = $produits;
+        $this->commande = $commande;
 
         return $this;
     }
@@ -154,9 +154,9 @@ class Commandes
      *
      * @return array 
      */
-    public function getProduits()
+    public function getCommande()
     {
-        return $this->produits;
+        return $this->commande;
     }
 
     /**
